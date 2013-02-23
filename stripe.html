@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+</head>
+<style type="text/css" media="screen">
+    input.invalid {
+        border: 2px solid red;
+    }
+
+    .validation.failed:after {
+        color: red;
+        content: 'Validation failed';
+    }
+
+    .validation.passed:after {
+        color: green;
+        content: 'Validation passed';
+    }
+    #stripe-form{
+        margin-left: 400px;
+        margin-top: 100px;
+    }
+</style>
+
+
+<body>
+<script type="text/javascript" src="stripe.js"></script>
+<script type="text/javascript" src="jquery.payment.js"></script>
+
+<div id="stripe-form">
+    <form action="/test/plans/reddy-dev" method="POST" id="payment-form" autocomplete="on" novalidate="">
+        <div class="form-row">
+            <div class="cc-text">Card Number</div>
+            <input type="text" class="cc-number" pattern="\d*" x-autocompletetype="cc-number" placeholder="Card number" required>
+        </div>
+        <div class="form-row">
+            <div class="cc-text">CVC</div>
+            <input type="text" class="cc-cvc" pattern="\d*" x-autocompletetype="cc-csc" placeholder="Security code" required  autocomplete="off">
+        </div>
+        <div class="form-row">
+            <div class="cc-text">Expiration (MM/YY)</div>
+            <input class="cc-exp" type="text" maxlength="9" required="" placeholder="Expires MM/YY" x-autocompletetype="cc-exp" pattern="\d*"></input>
+        </div>
+        <input data-numeric="" type="hidden"/>
+        <button type="submit" class="submit-button" name="submit" >Submit Payment</button>
+    </form>
+    <div id="error" class="hidden"></div>
+    <div id="success" class="hidden">Thanks for using</div>
+</div>
+
+
+
+</body>
+</html>
